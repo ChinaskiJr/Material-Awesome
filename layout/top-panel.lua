@@ -12,11 +12,18 @@ local dpi = require('beautiful').xresources.apply_dpi
 local icons = require('theme.icons')
 
 -- Clock / Calendar 24h format
-local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%d.%m.%Y\n     %H:%M</span>')
+local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%d.%m.%Y\n  %H:%M:%S</span>', 1)
 
 -- Clock / Calendar 12AM/PM fornat
 -- local textclock = wibox.widget.textclock('<span font="Roboto Mono bold 9">%d.%m.%Y\n  %I:%M %p</span>\n<span font="Roboto Mono bold 9">%p</span>')
 -- textclock.forced_height = 56
+
+local clock = awful.widget.watch(
+    "date +'%a %d %b %R:%S'", 1,
+    function(widget, stdout)
+        widget:set_markup(" " .. markup.font(theme.font, stdout))
+    end
+)
 
 -- Add a calendar (credits to kylekewley for the original code)
 local month_calendar = awful.widget.calendar_popup.month({
