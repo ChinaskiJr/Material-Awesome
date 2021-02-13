@@ -44,5 +44,40 @@ awful.rules.rules = {
       end,
       skip_decoration = true
     }
-  }
+  },
+  -- PhpStorm
+  { rule = { class = "jetbrains-phpstorm", type = "dialog"},
+    properties = {
+      floating = true,
+      screen = 2,
+      maximized_vertical = true,
+      maximized_horizontal = true,
+    }
+  },
+  {
+    rule = {
+      class = "jetbrains-phpstorm",
+      name="^win[0-9]+$"
+    },
+    properties = {
+      placement = awful.placement.no_offscreen,
+      titlebars_enabled = false
+    }
+  },
+
+  -- AndroidStudio
+  { rule = { class = "jetbrains-studio", type = "dialog"},
+    properties = {
+      floating = true,
+      screen = 2,
+      maximized_vertical = true,
+      maximized_horizontal = true,
+    }
+  },
+  { rule = { class = "jetbrains-studio", name="^win[0-9]+$"},
+    properties = {
+      placement = awful.placement.no_offscreen,
+      titlebars_enabled = false
+    }
+  },
 }
