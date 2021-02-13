@@ -10,25 +10,19 @@ local apps = require('configuration.apps')
 local globalKeys =
   awful.util.table.join(
   -- Hotkeys
-  awful.key({modkey}, 'F1', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
-  -- Tag browsing
-  awful.key({modkey}, 'w', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({modkey}, 's', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
-  awful.key({altkey, 'Control'}, 'Up', awful.tag.viewprev, {description = 'view previous', group = 'tag'}),
-  awful.key({altkey, 'Control'}, 'Down', awful.tag.viewnext, {description = 'view next', group = 'tag'}),
-  awful.key({modkey}, 'Escape', awful.tag.history.restore, {description = 'go back', group = 'tag'}),
+  awful.key({modkey}, 's', hotkeys_popup.show_help, {description = 'show help', group = 'awesome'}),
   -- Default client focus
   awful.key(
-    {modkey},
-    'd',
+    {altkey},
+    'j',
     function()
       awful.client.focus.byidx(1)
     end,
     {description = 'focus next by index', group = 'client'}
   ),
   awful.key(
-    {modkey},
-    'a',
+    {altkey},
+    'k',
     function()
       awful.client.focus.byidx(-1)
     end,
@@ -43,14 +37,44 @@ local globalKeys =
     {description = 'show main menu', group = 'awesome'}
   ),
   awful.key(
-    {altkey},
-    'space',
-    function()
-      _G.screen.primary.left_panel:toggle(true)
-    end,
-    {description = 'show main menu', group = 'awesome'}
+    {modkey},
+    'u',
+    awful.client.urgent.jumpto,
+    {description = 'jump to urgent client', group = 'client'}
   ),
-  awful.key({modkey}, 'u', awful.client.urgent.jumpto, {description = 'jump to urgent client', group = 'client'}),
+    -- By direction client focus
+    awful.key(
+      {modkey},
+      "j",
+      function()
+        awful.client.focus.global_bydirection("down")
+        if client.focus then client.focus:raise() end
+      end,
+      {description = "focus down", group = "client"}),
+    awful.key(
+      {modkey},
+      "k",
+      function()
+        awful.client.focus.global_bydirection("up")
+        if client.focus then client.focus:raise() end
+      end,
+      {description = "focus up", group = "client"}),
+    awful.key(
+      {modkey},
+      "h",
+      function()
+        awful.client.focus.global_bydirection("left")
+        if client.focus then client.focus:raise() end
+      end,
+      {description = "focus left", group = "client"}),
+    awful.key(
+      {modkey},
+      "l",
+      function()
+        awful.client.focus.global_bydirection("right")
+        if client.focus then client.focus:raise() end
+      end,
+      {description = "focus right", group = "client"}),
   awful.key(
     {altkey},
     'Tab',
@@ -124,19 +148,10 @@ local globalKeys =
     end,
     {description = 'open a browser', group = 'launcher'}
   ),
-  -- Open private browser/brave
-  awful.key(
-    {modkey},
-    'p',
-    function()
-      awful.util.spawn_with_shell('brave-browser')
-    end,
-    {description = 'Open Brave', group = 'launcher'}
-  ),
   -- Standard program
   awful.key(
     {modkey},
-    'x',
+    'Return',
     function()
       awful.util.spawn_with_shell(apps.default.terminal)
     end,
@@ -146,7 +161,7 @@ local globalKeys =
   awful.key({modkey, 'Control'}, 'q', _G.awesome.quit, {description = 'quit awesome', group = 'awesome'}),
   awful.key(
     {altkey, 'Shift'},
-    'Right',
+    'l',
     function()
       awful.tag.incmwfact(0.05)
     end,
@@ -154,7 +169,7 @@ local globalKeys =
   ),
   awful.key(
     {altkey, 'Shift'},
-    'Left',
+    'h',
     function()
       awful.tag.incmwfact(-0.05)
     end,
@@ -162,7 +177,7 @@ local globalKeys =
   ),
   awful.key(
     {altkey, 'Shift'},
-    'Down',
+    'k',
     function()
       awful.client.incwfact(0.05)
     end,
@@ -170,7 +185,7 @@ local globalKeys =
   ),
   awful.key(
     {altkey, 'Shift'},
-    'Up',
+    'j',
     function()
       awful.client.incwfact(-0.05)
     end,
@@ -373,6 +388,15 @@ local globalKeys =
       awful.util.spawn_with_shell('emoji-toggle')
     end,
     {description = 'Toggle the ibus unimoji engine for writing emojis', group = 'hotkeys'}
+  ),
+  -- Flameshot
+  awful.key(
+    { altkey },
+    'p',
+    function ()
+      os.execute("flameshot gui")
+    end,
+    {description = "take a screenshot with flameshot", group = "hotkeys" }
   )
 )
 
