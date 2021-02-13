@@ -15,8 +15,8 @@ local clientKeys =
     {description = 'toggle fullscreen', group = 'client'}
   ),
   awful.key(
-    {modkey},
-    'q',
+    {modkey, "Shift" },
+    'c',
     function(c)
       c:kill()
     end,
