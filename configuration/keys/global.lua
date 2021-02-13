@@ -102,7 +102,7 @@ local globalKeys =
   -- Programms
   awful.key(
     {modkey},
-    'l',
+    'p',
     function()
       awful.spawn(apps.default.lock)
     end,
