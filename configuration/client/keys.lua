@@ -15,13 +15,20 @@ local clientKeys =
     {description = 'toggle fullscreen', group = 'client'}
   ),
   awful.key(
-    {modkey, "Shift" },
+    {modkey, "Shift"},
     'c',
     function(c)
       c:kill()
     end,
     {description = 'close', group = 'client'}
-  )
+  ),
+  awful.key(
+    {modkey, "Control"},
+    "Return",
+    function (c)
+      c:swap(awful.client.getmaster())
+    end,
+    {description = "move to master", group = "client"})
 )
 
 return clientKeys
