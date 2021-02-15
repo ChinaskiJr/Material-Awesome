@@ -37,8 +37,8 @@ return {
     '/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     --'/usr/lib/x86_64-linux-gnu/libexec/polkit-kde-authentication-agent-1 & eval $(gnome-keyring-daemon -s --components=pkcs11,secrets,ssh,gpg)', -- credential manager
     'blueman-tray', -- bluetooth tray
-    'thunderbird', -- Email client
-    'protonmail-bridge --no-window',
+    'birdtray', -- Email client
+    'protonmail-bridge --no-window', --Protonmail bridge
     'flameshot', --screen capture
     'nitrogen --restore', -- wallpaper management
     -- Add applications that need to be killed between reloads
