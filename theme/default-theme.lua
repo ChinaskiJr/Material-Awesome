@@ -70,7 +70,12 @@ local awesome_overrides =
   -- Taglist
 
   theme.taglist_bg_empty = theme.background.hue_800
-  theme.taglist_bg_occupied = theme.background.hue_700
+  theme.taglist_bg_occupied =
+  'linear:0,0:' ..
+    dpi(48) ..
+      ',0:0,' ..
+        theme.secondary.hue_500 ..
+          ':0.08,' .. theme.secondary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
   theme.taglist_bg_urgent =
     'linear:0,0:' ..
     dpi(48) ..
@@ -82,7 +87,7 @@ local awesome_overrides =
     dpi(48) ..
       ',0:0,' ..
         theme.primary.hue_500 ..
-          ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_400 .. ':1,' .. theme.background.hue_400
+          ':0.08,' .. theme.primary.hue_500 .. ':0.08,' .. theme.background.hue_800 .. ':1,' .. theme.background.hue_800
 
   -- Tasklist
 
