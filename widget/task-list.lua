@@ -124,7 +124,7 @@ local function list_update(w, buttons, label, data, objects)
       -- truncate when title is too long
       local textOnly = text:match('>(.-)<')
       if (textOnly:len() > 24) then
-        text = text:gsub('>(.-)<', '>' .. textOnly:sub(1, 21) .. '...<')
+        text = text:gsub('>(.-)<', '>' .. textOnly:sub(1, 19) .. '...<')
         tt:set_text(textOnly)
         tt:add_to_object(tb)
       else
