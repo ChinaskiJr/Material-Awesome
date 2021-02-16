@@ -8,49 +8,41 @@ local tags = {
     icon = icons.mdone,
     type = 'chrome',
     defaultApp = apps.default.browser,
-    screen = 1
   },
   {
     icon = icons.mdtwo,
     type = 'code',
     defaultApp = apps.default.editor,
-    screen = 1
   },
   {
     icon = icons.mdthree,
     type = 'social',
     defaultApp = apps.default.social,
-    screen = 1
   },
   {
     icon = icons.mdfour,
     type = 'game',
     defaultApp = apps.default.game,
-    screen = 1
   },
   {
     icon = icons.mdfive,
     type = 'vms',
     defaultApp = apps.default.game,
-    screen = 1
   },
   {
     icon = icons.mdsix,
     type = 'files',
     defaultApp = apps.default.files,
-    screen = 1
   },
   {
     icon = icons.mdseven,
     type = 'music',
     defaultApp = apps.default.music,
-    screen = 1
   },
   {
     icon = icons.mdheight,
     type = 'any',
     defaultApp = apps.default.rofi,
-    screen = 1
   }
 }
 
@@ -64,13 +56,18 @@ awful.layout.layouts = {
 
 awful.screen.connect_for_each_screen(
   function(s)
+    if s.geometry.width >= s.geometry.height then
+      layout = awful.layout.layouts[1]
+    else
+      layout = awful.layout.layouts[3]
+    end
     for i, tag in pairs(tags) do
       awful.tag.add(
         i,
         {
           icon = tag.icon,
           icon_only = true,
-          layout = awful.layout.suit.tile,
+          layout = layout,
           gap_single_client = false,
           gap = 4,
           screen = s,
