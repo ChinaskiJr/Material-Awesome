@@ -150,7 +150,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey},
-    'f',
+    'v',
     function()
       awful.util.spawn(apps.default.files)
     end,
