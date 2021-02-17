@@ -148,6 +148,14 @@ local globalKeys =
     end,
     {description = 'open a browser', group = 'launcher'}
   ),
+  awful.key(
+    {modkey},
+    'f',
+    function()
+      awful.util.spawn(apps.default.files)
+    end,
+    {description = 'open file manager', group = 'launcher'}
+  ),
   -- Standard program
   awful.key(
     {modkey},
