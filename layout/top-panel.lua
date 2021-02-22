@@ -6,6 +6,10 @@ local gears = require('gears')
 local clickable_container = require('widget.material.clickable-container')
 local mat_icon_button = require('widget.material.icon-button')
 local mat_icon = require('widget.material.icon')
+local cpu_meter = require('widget.cpu.cpu-meter')
+local ram_meter = require('widget.ram.ram-meter')
+local temperature_meter = require('widget.temperature.temperature-meter')
+local hardrive_meter = require('widget.harddrive.harddrive-meter')
 
 local dpi = require('beautiful').xresources.apply_dpi
 
@@ -131,7 +135,19 @@ local TopPanel = function(s, offset)
       TaskList(s),
       add_button
     },
-    nil,
+    {
+      layout = awful.widget.only_on_screen,
+      screen = "primary",
+      -- Clock
+      wibox.widget {
+        require('widget.cpu.cpu-meter'),
+        require('widget.ram.ram-meter'),
+        require('widget.temperature.temperature-meter'),
+        require('widget.harddrive.harddrive-meter'),
+        require('widget.volume.volume-slider'),
+        layout = wibox.layout.flex.horizontal
+      },
+    },
     {
       layout = wibox.layout.fixed.horizontal,
       -- Clock

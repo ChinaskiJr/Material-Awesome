@@ -4,7 +4,7 @@
 
 TODO : 
 - [ ] Incorporer awmodoro
-- [ ] Ramener les indicateurs du left_panel dans la topbar horizontale. Moniteurs comme son
+- [X] Ramener les indicateurs du left_panel dans la topbar horizontale. Moniteurs comme son
 
 ---
 
