@@ -39,6 +39,17 @@ month_calendar:attach(textclock)
 
 local clock_widget = wibox.container.margin(textclock, dpi(13), dpi(13), dpi(8), dpi(8))
 
+local meters = wibox.widget {
+  require('widget.cpu.cpu-meter'),
+  require('widget.ram.ram-meter'),
+  require('widget.temperature.temperature-meter'),
+  require('widget.harddrive.harddrive-meter'),
+  require('widget.volume.volume-slider'),
+  layout = wibox.layout.fixed.horizontal
+}
+
+local meters_widget = wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', 300)
+
 local add_button = mat_icon_button(mat_icon(icons.plus, dpi(24)))
 add_button:buttons(
   gears.table.join(
@@ -134,21 +145,14 @@ local TopPanel = function(s, offset)
       -- Create a taglist widget
       TaskList(s),
     },
-    {
-      layout = awful.widget.only_on_screen,
-      screen = "primary",
-      -- Clock
-      wibox.widget {
-        require('widget.cpu.cpu-meter'),
-        require('widget.ram.ram-meter'),
-        require('widget.temperature.temperature-meter'),
-        require('widget.harddrive.harddrive-meter'),
-        require('widget.volume.volume-slider'),
-        layout = wibox.layout.flex.horizontal
-      },
-    },
+    nil,
     {
       layout = wibox.layout.fixed.horizontal,
+      wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', 300),
+      wibox.container.constraint(require('widget.ram.ram-meter'), 'max', 300),
+      wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', 300),
+      wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', 300),
+      wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),
       -- Clock
       clock_widget,
       -- Layout box
