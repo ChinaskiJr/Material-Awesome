@@ -10,6 +10,7 @@ local cpu_meter = require('widget.cpu.cpu-meter')
 local ram_meter = require('widget.ram.ram-meter')
 local temperature_meter = require('widget.temperature.temperature-meter')
 local hardrive_meter = require('widget.harddrive.harddrive-meter')
+local todo_widget = require('widget.todo-widget.todo')
 
 local dpi = require('beautiful').xresources.apply_dpi
 
@@ -155,6 +156,7 @@ local TopPanel = function(s, offset)
       wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),
       -- Clock
       clock_widget,
+      wibox.container.margin(todo_widget(), 20, 20),
       -- Layout box
       LayoutBox(s)
     }
