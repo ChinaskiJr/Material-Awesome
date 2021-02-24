@@ -201,7 +201,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey, 'Shift'},
-    'Left',
+    'l',
     function()
       awful.tag.incnmaster(1, nil, true)
     end,
@@ -209,7 +209,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey, 'Shift'},
-    'Right',
+    'h',
     function()
       awful.tag.incnmaster(-1, nil, true)
     end,
@@ -217,7 +217,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey, 'Control'},
-    'Left',
+    'l',
     function()
       awful.tag.incncol(1, nil, true)
     end,
@@ -225,7 +225,7 @@ local globalKeys =
   ),
   awful.key(
     {modkey, 'Control'},
-    'Right',
+    'h',
     function()
       awful.tag.incncol(-1, nil, true)
     end,
