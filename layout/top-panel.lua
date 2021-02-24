@@ -133,7 +133,6 @@ local TopPanel = function(s, offset)
       layout = wibox.layout.fixed.horizontal,
       -- Create a taglist widget
       TaskList(s),
-      add_button
     },
     {
       layout = awful.widget.only_on_screen,
