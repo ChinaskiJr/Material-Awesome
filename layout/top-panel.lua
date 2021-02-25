@@ -155,8 +155,8 @@ local TopPanel = function(s, offset)
       wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', 300),
       wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),
       -- Clock
+      wibox.container.margin(todo_widget(), 10, 10),
       clock_widget,
-      wibox.container.margin(todo_widget(), 20, 20),
       -- Layout box
       LayoutBox(s)
     }

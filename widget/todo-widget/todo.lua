@@ -16,7 +16,7 @@ local beautiful = require("beautiful")
 local gfs = require("gears.filesystem")
 
 local HOME_DIR = os.getenv("HOME")
-local WIDGET_DIR = HOME_DIR .. '/.config/awesome/awesome-wm-widgets/todo-widget'
+local WIDGET_DIR = HOME_DIR .. '/.config/awesome/widget/todo-widget'
 local STORAGE = HOME_DIR .. '/.cache/awmw/todo-widget/todos.json'
 
 local GET_TODO_ITEMS = 'bash -c "cat ' .. STORAGE .. '"'
@@ -31,7 +31,7 @@ todo_widget.widget = wibox.widget {
             widget = wibox.widget.imagebox
         },
         id = "margin",
-        margins = 4,
+        margins = 12,
         layout = wibox.container.margin
     },
     {
@@ -164,12 +164,12 @@ local function worker(user_args)
 
             local checkbox = wibox.widget {
                 checked       = todo_item.status,
-                color         = beautiful.bg_normal,
+                color         = '#FFFFFF',
                 paddings      = 2,
                 shape         = gears.shape.circle,
                 forced_width = 20,
                 forced_height = 20,
-                check_color = beautiful.fg_urgent,
+                check_color = '#FFFFFF',
                 widget        = wibox.widget.checkbox
             }
 
