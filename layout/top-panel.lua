@@ -149,13 +149,20 @@ local TopPanel = function(s, offset)
     nil,
     {
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', 300),
-      wibox.container.constraint(require('widget.ram.ram-meter'), 'max', 300),
-      wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', 300),
-      wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', 300),
-      wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),
+      {
+        layout = awful.widget.only_on_screen,
+        screen = "primary",
+        {
+          layout = wibox.layout.fixed.horizontal,
+          wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', s.geometry.width / 12),
+          wibox.container.constraint(require('widget.ram.ram-meter'), 'max', s.geometry.width / 12),
+          wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', s.geometry.width / 12),
+          wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', s.geometry.width / 12),
+          wibox.container.constraint(require('widget.volume.volume-slider'), 'max', s.geometry.width / 12),
+          wibox.container.margin(todo_widget(), 10, 10),
+        },
+      },
       -- Clock
-      wibox.container.margin(todo_widget(), 10, 10),
       clock_widget,
       -- Layout box
       LayoutBox(s)
