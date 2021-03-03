@@ -6,6 +6,8 @@ local hotkeys_popup = require('awful.hotkeys_popup').widget
 local modkey = require('configuration.keys.mod').modKey
 local altkey = require('configuration.keys.mod').altKey
 local apps = require('configuration.apps')
+local naughty = require('naughty')
+
 -- Key bindings
 local globalKeys =
   awful.util.table.join(
@@ -405,6 +407,23 @@ local globalKeys =
       os.execute("flameshot gui")
     end,
     {description = "take a screenshot with flameshot", group = "hotkeys" }
+  ),
+  -- Panic key
+  awful.key(
+    {altkey },
+    'o',
+    function()
+      naughty.suspend()
+    end,
+    {description = "Panic key", grou = "hotkeys"}
+  ),
+  awful.key(
+    {altkey, 'Shift' },
+    'o',
+    function()
+      naughty.resume()
+    end,
+    {description = "Unpanic key", grou = "hotkeys"}
   )
 )
 
