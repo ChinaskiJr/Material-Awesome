@@ -121,11 +121,11 @@ local function list_update(w, buttons, label, data, objects)
     if text == nil or text == '' then
       tbm:set_margins(0)
     else
-      -- truncate when title is too long
-      local textOnly = text:match('>(.-)<')
-      if (textOnly:len() > 24) then
-        text = text:gsub('>(.-)<', '>' .. textOnly:sub(1, 19) .. '...<')
-        tt:set_text(textOnly)
+      -- Truncate when title is too long
+      local text_only = text:match('>(.-)<')
+      if (utf8.len(text_only) > 24) then
+        text = text:gsub('>(.-)<', '>' .. string.sub(text_only, 1, utf8.offset(text_only,22) - 1) .. '...<')
+        tt:set_text(text_only)
         tt:add_to_object(tb)
       else
         tt:remove_from_object(tb)
