@@ -9,11 +9,18 @@ local dpi = require('beautiful').xresources.apply_dpi
 local total_prev = 0
 local idle_prev = 0
 
-local slider =
+--local slider =
+--  wibox.widget {
+--  read_only = true,
+--  widget = mat_slider
+--  }
+
+local textbox =
   wibox.widget {
-  read_only = true,
-  widget = mat_slider
-}
+    align  = 'center',
+    valign = 'center',
+    widget = wibox.widget.textbox
+  }
 
 watch(
   [[bash -c "cat /proc/stat | grep '^cpu '"]],
@@ -27,8 +34,9 @@ watch(
     local diff_idle = idle - idle_prev
     local diff_total = total - total_prev
     local diff_usage = (1000 * (diff_total - diff_idle) / diff_total + 5) / 10
+    local rounded_diff_usage = math.floor(diff_usage + 0.5)
 
-    slider:set_value(diff_usage)
+    textbox:set_text(rounded_diff_usage .. '%')
 
     total_prev = total
     idle_prev = idle
@@ -43,7 +51,7 @@ local cpu_meter =
     size = dpi(24),
     widget = mat_icon
   },
-  slider,
+  textbox,
   widget = mat_list_item
 }
 
