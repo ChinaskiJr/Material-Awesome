@@ -6,22 +6,28 @@ local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local dpi = require('beautiful').xresources.apply_dpi
 
-local slider =
-  wibox.widget {
-  read_only = true,
-  widget = mat_slider
+--local slider =
+--  wibox.widget {
+--  read_only = true,
+--  widget = mat_slider
+--}
+local textbox =
+wibox.widget {
+  align  = 'center',
+  valign = 'center',
+  widget = wibox.widget.textbox
 }
 
 watch(
-  'bash -c "free | grep -z Mem.*Swap.*"',
+  [[ bash -c "free -t |awk 'NR == 2 {print $3/$2*100}'"]],
   1,
   function(_, stdout)
-    local total, used, free, shared, buff_cache, available, total_swap, used_swap, free_swap =
-      stdout:match('(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*(%d+)%s*Swap:%s*(%d+)%s*(%d+)%s*(%d+)')
-    slider:set_value(used / total * 100)
+    textbox:set_text(math.floor(stdout * 10) / 10 .. '%')
     collectgarbage('collect')
   end
 )
+
+
 
 local ram_meter =
   wibox.widget {
@@ -30,7 +36,7 @@ local ram_meter =
     size = dpi(24),
     widget = mat_icon
   },
-  slider,
+  textbox,
   widget = mat_list_item
 }
 
