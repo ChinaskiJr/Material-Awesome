@@ -6,10 +6,11 @@ local icons = require('theme.icons')
 local watch = require('awful.widget.watch')
 local dpi = require('beautiful').xresources.apply_dpi
 
-local slider =
-  wibox.widget {
-  read_only = true,
-  widget = mat_slider
+local textbox =
+wibox.widget {
+  align  = 'center',
+  valign = 'center',
+  widget = wibox.widget.textbox
 }
 
 local max_temp = 80
@@ -18,7 +19,7 @@ watch(
   1,
   function(_, stdout)
     local temp = stdout:match('(%d+)')
-    slider:set_value((temp / 1000) / max_temp * 100)
+    textbox:set_text((temp / 1000) / max_temp * 100 .. '°')
     collectgarbage('collect')
   end
 )
@@ -30,7 +31,7 @@ local temperature_meter =
     size = dpi(24),
     widget = mat_icon
   },
-  slider,
+  textbox,
   widget = mat_list_item
 }
 
