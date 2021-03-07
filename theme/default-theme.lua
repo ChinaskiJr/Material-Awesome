@@ -17,15 +17,21 @@ local icon_folder = "/usr/share/icons/Numix-Circle/48/apps/"
 
 theme.ic_icons = {
   ["firefox"] = icon_folder .. "firefox.svg",
-  ["firefoxdeveloperedition"] = icon_folder .. "firefox-developer-edition.svg",
+  ["Firefox"] = icon_folder .. "firefox.svg",
   ["Thunderbird"] = icon_folder .. 'thunderbird.svg',
+  ["firefoxdeveloperedition"] = icon_folder .. "firefox-developer-edition.svg",
+  ["Firefox Developer Edition"] = icon_folder .. "firefox-developer-edition.svg",
   ["Xfce4-terminal"] = icon_folder .. 'xfce-terminal.svg',
   ["jetbrains-phpstorm"] = icon_folder .. 'phpstorm.svg',
   ["Joplin"] = icon_folder .. 'joplin.svg',
-  ["Subl"] = icon_folder .. 'sublimetext.svg',
   ["Slack"] = icon_folder .. 'slack.svg',
+  ["Subl"] = icon_folder .. 'sublimetext.svg',
+  ["Sublime_text"] = icon_folder .. 'sublimetext.svg',
   ["discord"] = icon_folder .. 'discord.svg',
-  ["VSCodium"] = icon_folder .. 'vscodium.svg'
+  ["VSCodium"] = icon_folder .. 'vscodium.svg',
+  ["Google-chrome"] = icon_folder .. 'google-chrome.svg',
+  ["Filezilla"] = icon_folder .. 'filezilla.svg',
+  ["Thunar"] = icon_folder .. 'thunar.svg',
 }
 
 -- Accent
