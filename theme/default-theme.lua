@@ -12,6 +12,22 @@ theme.font = 'Roboto medium 10'
 -- Primary
 theme.primary = mat_colors.deep_orange
 
+-- custom icons
+local icon_folder = "/usr/share/icons/Numix-Circle/48/apps/"
+
+theme.ic_icons = {
+  ["firefox"] = icon_folder .. "firefox.svg",
+  ["firefoxdeveloperedition"] = icon_folder .. "firefox-developer-edition.svg",
+  ["Thunderbird"] = icon_folder .. 'thunderbird.svg',
+  ["Xfce4-terminal"] = icon_folder .. 'xfce-terminal.svg',
+  ["jetbrains-phpstorm"] = icon_folder .. 'phpstorm.svg',
+  ["Joplin"] = icon_folder .. 'joplin.svg',
+  ["Subl"] = icon_folder .. 'sublimetext.svg',
+  ["Slack"] = icon_folder .. 'slack.svg',
+  ["discord"] = icon_folder .. 'discord.svg',
+  ["VSCodium"] = icon_folder .. 'vscodium.svg'
+}
+
 -- Accent
 theme.accent = mat_colors.pink
 

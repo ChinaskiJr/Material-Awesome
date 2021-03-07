@@ -13,6 +13,7 @@ require('layout')
 require('module.notifications')
 require('module.auto-start')
 require('module.decorate-client')
+require('module.icon_customizer'){}
 -- Backdrop causes bugs on some gtk3 applications
 --require('module.backdrop')
 require('module.exit-screen')

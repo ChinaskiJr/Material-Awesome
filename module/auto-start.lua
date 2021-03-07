@@ -4,6 +4,8 @@
 local awful = require('awful')
 local apps = require('configuration.apps')
 
+-- TODO Implémenter un choix de tag et de screen
+-- https://stackoverflow.com/a/16625682
 local function run_once(cmd)
   local findme = cmd
   local firstspace = cmd:find(' ')
