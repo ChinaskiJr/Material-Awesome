@@ -155,7 +155,7 @@ local TopPanel = function(s, offset)
         {
           layout = wibox.layout.fixed.horizontal,
           wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', 140),
-          wibox.container.constraint(require('widget.ram.ram-meter'), 'max', 140),
+          wibox.container.constraint(require('widget.ram.ram-meter'), 'max', 240),
           wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', 140),
           wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', 140),
           wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),

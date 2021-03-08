@@ -20,15 +20,15 @@ wibox.widget {
 }
 
 watch(
-  [[ bash -c "free -t |awk 'NR == 2 {print $3/$2*100}'"]],
+  [[ bash -c "free | awk 'NR == 2 {printf \"%.2f\" \"% (\"\"%.2f\"\" Gb left)\", $3/$2*100, $4/1000000}'"]],
   1,
   function(_, stdout)
-    textbox:set_text(math.floor(stdout * 10) / 10 .. '%')
+    -- There is a cariage return at the end of the string...
+    -- awk is full of mystery
+    textbox:set_text(stdout:sub(1, #stdout - 1))
     collectgarbage('collect')
   end
 )
-
-
 
 local ram_meter =
   wibox.widget {
