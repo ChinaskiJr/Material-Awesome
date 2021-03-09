@@ -20,7 +20,7 @@ wibox.widget {
 }
 
 watch(
-  [[ bash -c "free | awk 'NR == 2 {printf \"%.2f\" \"% (\"\"%.2f\"\" Gb left)\", $3/$2*100, $4/1000000}'"]],
+  [[ bash -c "free -t | awk 'NR == 2 {printf \"%.2f\" \"% (\"\"%.2f\"\" Gb left)\", $3/$2*100, $7/1000000}'"]],
   1,
   function(_, stdout)
     -- There is a cariage return at the end of the string...
