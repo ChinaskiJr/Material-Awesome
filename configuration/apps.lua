@@ -18,7 +18,7 @@ return {
     
     -- Editing these also edits the default program
     -- associated with each tag/workspace
-    browser = os.getenv("BROWSER") or "firefox",
+    browser = os.getenv("BROWSER") or "firefox-developer-edition",
     editor = os.getenv("GUI_EDITOR") or "codium", -- gui text editor
     social = 'env discord',
     game = rofi_command,
@@ -27,10 +27,10 @@ return {
   },
   -- List of apps to start once on start-up
   run_on_start_up = {
-    'picom',
+    'compton',
     'nm-applet --indicator', -- wifi
     --'blueberry-tray', -- Bluetooth tray icon
-    --'xfce4-power-manager', -- Power manager
+    'xfce4-power-manager', -- Power manager
     -- 'ibus-daemon --xim --daemonize', -- Ibus daemon for keyboard
     'scream-start', -- scream audio sink
     'numlockx on', -- enable numlock
