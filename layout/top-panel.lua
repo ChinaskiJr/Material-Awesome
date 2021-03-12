@@ -139,13 +139,33 @@ local TopPanel = function(s, offset)
     }
   )
 
+  local cpu_constraint = 120
+  local ram_constraint = 230
+  local temp_constraint = 130
+  local hdd_constraint = 120
+  local volume_constraint = 300
+  local common_constraint = 300
+
+  local tasks_layout = {}
+  if s ~= screen.primary then
+    tasks_layout =
+      {
+        layout = wibox.layout.fixed.horizontal,
+        -- Create a taglist widget
+        wibox.container.constraint(TaskList(s), 'max', s.geometry.width - common_constraint),
+      }
+  else
+    tasks_layout =
+      {
+        layout = wibox.layout.fixed.horizontal,
+        -- Create a taglist widget
+        wibox.container.constraint(TaskList(s), 'max', s.geometry.width - cpu_constraint - ram_constraint - temp_constraint - hdd_constraint - volume_constraint - common_constraint),
+    }
+  end
+
   panel:setup {
     layout = wibox.layout.align.horizontal,
-    {
-      layout = wibox.layout.fixed.horizontal,
-      -- Create a taglist widget
-      TaskList(s),
-    },
+    tasks_layout,
     nil,
     {
       layout = wibox.layout.fixed.horizontal,
@@ -154,11 +174,11 @@ local TopPanel = function(s, offset)
         screen = "primary",
         {
           layout = wibox.layout.fixed.horizontal,
-          wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', 120),
-          wibox.container.constraint(require('widget.ram.ram-meter'), 'max', 230),
-          wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', 130),
-          wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', 120),
-          wibox.container.constraint(require('widget.volume.volume-slider'), 'max', 300),
+          wibox.container.constraint(require('widget.cpu.cpu-meter'), 'max', cpu_constraint),
+          wibox.container.constraint(require('widget.ram.ram-meter'), 'max', ram_constraint),
+          wibox.container.constraint(require('widget.temperature.temperature-meter'), 'max', temp_constraint),
+          wibox.container.constraint(require('widget.harddrive.harddrive-meter'), 'max', hdd_constraint),
+          wibox.container.constraint(require('widget.volume.volume-slider'), 'max', common_constraint),
           wibox.container.margin(todo_widget(), 10, 10),
         },
       },
