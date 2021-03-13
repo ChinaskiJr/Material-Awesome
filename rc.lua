@@ -2,6 +2,7 @@ local gears = require('gears')
 local awful = require('awful')
 require('awful.autofocus')
 local beautiful = require('beautiful')
+local dpi = require('beautiful').xresources.apply_dpi
 
 -- Theme
 beautiful.init(require('theme'))
@@ -14,6 +15,13 @@ require('module.notifications')
 require('module.auto-start')
 require('module.decorate-client')
 require('module.icon_customizer'){}
+require('module.smart_borders'){
+    show_button_tooltips = true,
+    align_horizontal = "center",
+    color_normal = beautiful.border_normal,
+    color_focus = beautiful.border_focus,
+    border_width = dpi(4)
+}
 -- Backdrop causes bugs on some gtk3 applications
 --require('module.backdrop')
 require('module.exit-screen')
@@ -68,17 +76,3 @@ _G.client.connect_signal(
   end
 )
 --]]
-
--- Make the focused window have a glowing border
-_G.client.connect_signal(
-  'focus',
-  function(c)
-    c.border_color = beautiful.border_focus
-  end
-)
-_G.client.connect_signal(
-  'unfocus',
-  function(c)
-    c.border_color = beautiful.border_normal
-  end
-)
