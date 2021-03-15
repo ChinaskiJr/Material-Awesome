@@ -15,6 +15,24 @@ local clientKeys =
     {description = 'toggle fullscreen', group = 'client'}
   ),
   awful.key(
+    {modkey},
+    'm',
+    function(c)
+      c.maximized = not c.maximized
+      c:raise()
+    end,
+    {description = 'toggle maximize screen', group = 'client'}
+  ),
+  awful.key(
+    {modkey, "Control"},
+    'space',
+    function(c)
+      c.floating = not c.floating
+      c:raise()
+    end,
+    {description = 'toggle floating screen', group = 'client'}
+  ),
+  awful.key(
     {modkey, "Shift"},
     'c',
     function(c)
