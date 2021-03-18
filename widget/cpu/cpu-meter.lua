@@ -20,7 +20,7 @@ local textbox =
     align  = 'center',
     valign = 'center',
     widget = wibox.widget.textbox,
-    font = 'Roboto medium 10',
+    font = 'Roboto bold 8',
   }
 
 watch(
