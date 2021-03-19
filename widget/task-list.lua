@@ -40,79 +40,70 @@ local function list_update(w, buttons, label, data, objects)
   -- update the widgets, creating them if needed
   w:reset()
   for i, o in ipairs(objects) do
-    local cache = data[o]
     local ib, cb, tb, cbm, bgb, tbm, ibm, tt, l, ll, bg_clickable
-    if cache then
-      ib = cache.ib
-      tb = cache.tb
-      bgb = cache.bgb
-      tbm = cache.tbm
-      ibm = cache.ibm
-      tt  = cache.tt
-    else
-      ib = wibox.widget.imagebox()
-      tb = wibox.widget.textbox()
-      cb =
-        clickable_container(
-        wibox.container.margin(
-          wibox.widget.imagebox(os.getenv('HOME') .. '/.config/awesome/theme/icons/tag-list/tag/close.png'),
-          4,
-          4,
-          4,
-          4
+
+    ib = wibox.widget.imagebox()
+    tb = wibox.widget.textbox()
+    cb =
+      clickable_container(
+      wibox.container.margin(
+        wibox.widget.imagebox(os.getenv('HOME') .. '/.config/awesome/theme/icons/tag-list/tag/close.png'),
+        4,
+        4,
+        4,
+        4
+      )
+    )
+    cb.shape = gears.shape.circle
+    cbm = wibox.container.margin(cb, dpi(4), dpi(8), dpi(12), dpi(12))
+    cbm:buttons(
+      gears.table.join(
+        awful.button(
+          {},
+          1,
+          nil,
+          function()
+            o.kill(o)
+          end
         )
       )
-      cb.shape = gears.shape.circle
-      cbm = wibox.container.margin(cb, dpi(4), dpi(8), dpi(12), dpi(12))
-      cbm:buttons(
-        gears.table.join(
-          awful.button(
-            {},
-            1,
-            nil,
-            function()
-              o.kill(o)
-            end
-          )
-        )
-      )
-      bg_clickable = clickable_container()
-      bgb = wibox.container.background()
-      tbm = wibox.container.margin(tb, dpi(4), dpi(4))
-      ibm = wibox.container.margin(ib, dpi(12), dpi(12), dpi(12), dpi(12))
-      l = wibox.layout.fixed.horizontal()
-      ll = wibox.layout.fixed.horizontal()
+    )
+    bg_clickable = clickable_container()
+    bgb = wibox.container.background()
+    tbm = wibox.container.margin(tb, dpi(4), dpi(4))
+    ibm = wibox.container.margin(ib, dpi(12), dpi(12), dpi(12), dpi(12))
+    l = wibox.layout.fixed.horizontal()
+    ll = wibox.layout.fixed.horizontal()
 
-      -- All of this is added in a fixed widget
-      l:fill_space(true)
-      l:add(ibm)
-      l:add(tbm)
-      ll:add(l)
-      ll:add(cbm)
+    -- All of this is added in a fixed widget
+    l:fill_space(true)
+    l:add(ibm)
+    l:add(tbm)
+    ll:add(l)
+    ll:add(cbm)
 
-      bg_clickable:set_widget(ll)
-      -- And all of this gets a background
-      bgb:set_widget(bg_clickable)
+    bg_clickable:set_widget(ll)
+    -- And all of this gets a background
+    bgb:set_widget(bg_clickable)
 
-      l:buttons(create_buttons(buttons, o))
+    l:buttons(create_buttons(buttons, o))
 
-      -- Tooltip to display whole title, if it was truncated
-      tt = awful.tooltip({
-        objects = {tb},
-        mode = 'outside',
-        align = 'bottom',
-        delay_show = 1,
-      })
+    -- Tooltip to display whole title, if it was truncated
+    tt = awful.tooltip({
+      objects = {tb},
+      mode = 'outside',
+      align = 'bottom',
+      delay_show = 1,
+    })
 
-      data[o] = {
-        ib = ib,
-        tb = tb,
-        bgb = bgb,
-        tbm = tbm,
-        ibm = ibm,
-        tt  = tt
-      }
-    end
+    data[o] = {
+      ib = ib,
+      tb = tb,
+      bgb = bgb,
+      tbm = tbm,
+      ibm = ibm,
+      tt  = tt
+    }
 
     local text, bg, bg_image, icon, args = label(o, tb)
     args = args or {}
