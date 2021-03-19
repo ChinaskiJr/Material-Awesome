@@ -23,6 +23,7 @@ theme.ic_icons = {
   ["Firefox Developer Edition"] = icon_folder .. "firefox-developer-edition.svg",
   ["Xfce4-terminal"] = icon_folder .. 'xfce-terminal.svg',
   ["jetbrains-phpstorm"] = icon_folder .. 'phpstorm.svg',
+  ["jetbrains-studio"] = icon_folder .. 'android-studio.svg',
   ["Joplin"] = icon_folder .. 'joplin.svg',
   ["Slack"] = icon_folder .. 'slack.svg',
   ["Subl"] = icon_folder .. 'sublimetext.svg',
