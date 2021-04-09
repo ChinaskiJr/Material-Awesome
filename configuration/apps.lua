@@ -15,7 +15,7 @@ return {
     screenshot = '~/.config/awesome/configuration/utils/screenshot -m',
     region_screenshot = '~/.config/awesome/configuration/utils/screenshot -r',
     delayed_screenshot = '~/.config/awesome/configuration/utils/screenshot --delayed -r',
-    
+
     -- Editing these also edits the default program
     -- associated with each tag/workspace
     browser = os.getenv("BROWSER") or "firefox-developer-edition",
@@ -42,6 +42,7 @@ return {
     'flameshot', --screen capture
     'nitrogen --restore', -- wallpaper management
     'xset s off -dpms', -- No screen saver
+    'nextcloud --background',
     -- Add applications that need to be killed between reloads
     -- to avoid multipled instances, inside the awspawn script
     '~/.config/awesome/configuration/awspawn' -- Spawn "dirty" apps that can linger between sessions
