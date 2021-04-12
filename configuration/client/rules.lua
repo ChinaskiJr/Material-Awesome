@@ -46,27 +46,8 @@ awful.rules.rules = {
     }
   },
   -- PhpStorm
-  { rule = { class = "jetbrains-phpstorm", type = "dialog"},
-    properties = {
-      floating = true,
-      screen = 2,
-      maximized_vertical = true,
-      maximized_horizontal = true,
-    }
-  },
-  {
-    rule = {
-      class = "jetbrains-phpstorm",
-      name="^win[0-9]+$"
-    },
-    properties = {
-      placement = awful.placement.no_offscreen,
-      titlebars_enabled = false
-    }
-  },
-
   -- AndroidStudio
-  { rule = { class = "jetbrains-studio", type = "dialog"},
+  { rule = { class = "jetbrains-*", type = "dialog"},
     properties = {
       floating = true,
       screen = 2,
@@ -74,10 +55,11 @@ awful.rules.rules = {
       maximized_horizontal = true,
     }
   },
-  { rule = { class = "jetbrains-studio", name="^win[0-9]+$"},
+  { rule = { class = "jetbrains-.*", instance = "sun-awt-X11-XWindowPeer", name = "win.*" },
     properties = {
-      placement = awful.placement.no_offscreen,
-      titlebars_enabled = false
-    }
-  },
+      placement = awful.placement.restore,
+      border_width = 0,
+      titlebars_enabled = false,
+    },
+  }
 }
